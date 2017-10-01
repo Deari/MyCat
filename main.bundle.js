@@ -58,6 +58,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'app';
+        this.f = 1;
     }
     return AppComponent;
 }());
