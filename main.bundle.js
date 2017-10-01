@@ -58,8 +58,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'app';
-        this.f = 1;
     }
+    AppComponent.prototype.onClick = function (status) {
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
