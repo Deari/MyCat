@@ -59,8 +59,6 @@ var AppComponent = (function () {
     function AppComponent() {
         this.title = 'app';
     }
-    AppComponent.prototype.onClick = function (status) {
-    };
     return AppComponent;
 }());
 AppComponent = __decorate([
