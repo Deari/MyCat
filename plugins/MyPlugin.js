@@ -1,5 +1,6 @@
 require('babel-core/register');
 require('babel-polyfill');
+const debug = require('debug')('app:bin:compile');
 const Repo = require("git-repository");
 
 
@@ -7,15 +8,15 @@ const PushDemo = async () => {
   try {
     let repo = await Repo.open('dist', {init: true});
     await repo.setRemote('origin', 'https://github.com/Deari/MyCat.git');
-    await repo.pull('orign', 'master:master');
     await repo.add('--all .');
     await repo.commit('Commit message');
-    await repo.push('origin', 'master:master', {
+    await repo.push('origin', 'master:online', {
       force: 1
     });
   } catch (e) {
+    debug('-- git deploy error --');
     console.log(e);
-  }
+  }trf5t
 };
 
 function MyPlugin(options) {

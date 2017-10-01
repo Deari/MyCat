@@ -4,6 +4,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 require('babel-core/register');
 require('babel-polyfill');
+var debug = require('debug')('app:bin:compile');
 var Repo = require("git-repository");
 
 var PushDemo = function () {
@@ -32,19 +33,22 @@ var PushDemo = function () {
 
           case 10:
             _context.next = 12;
-            return repo.push('origin', 'master');
+            return repo.push('origin', 'master:online', {
+              force: 1
+            });
 
           case 12:
-            _context.next = 17;
+            _context.next = 18;
             break;
 
           case 14:
             _context.prev = 14;
             _context.t0 = _context['catch'](0);
 
+            debug('-- git deploy error --');
             console.log(_context.t0);
 
-          case 17:
+          case 18:
           case 'end':
             return _context.stop();
         }
@@ -57,15 +61,9 @@ var PushDemo = function () {
   };
 }();
 
-function MyPlugin(options) {}
-// 根据 options 配置你的插件
-
-
-/*import Repo from "git-repository";
-
-export default async () => {
-  let repo = await  Repo.open
-}*/
+function MyPlugin(options) {
+  // 根据 options 配置你的插件
+}
 
 MyPlugin.prototype.apply = function (compiler) {
   compiler.plugin("compile", function (params) {
