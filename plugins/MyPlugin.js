@@ -7,9 +7,12 @@ const PushDemo = async () => {
   try {
     let repo = await Repo.open('dist', {init: true});
     await repo.setRemote('origin', 'https://github.com/Deari/MyCat.git');
+    await repo.pull('orign', 'master:master');
     await repo.add('--all .');
     await repo.commit('Commit message');
-    await repo.push('origin', 'master');
+    await repo.push('origin', 'master:master', {
+      force: 1
+    });
   } catch (e) {
     console.log(e);
   }
